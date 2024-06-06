@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Pagina Principal";
+}
+
+<main>
+        <section class="row" aria-labelledby="aspnetTitle">
+            <div id="textopapa" style="text-align:center">
+                <h1 id="title" style="font-family:'Times New Roman'; font-size: 60px">Bienvenidos.  </h1>
+                <p class="lead" style="font-family:'Times New Roman'; font-size: 25px">Encontrará diversidad de menus con mucha gastronomia</p>
+            </div>
+
+
+            <div id="botones" style="text-align: center; font-family: 'Times New Roman'; font-size: 20px ">
+                <button style="background: #0c0d3b; color: #ffffff; border: double medium; text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000">
+                    @Html.ActionLink("Menu Colombiano", "Menucolombiano", "Menucolombiano.aspx", new { area = "" }, new { @class = "nav-link" })
+                </button>
+                <button style="background: #0c0d3b; color: #ffffff; border: double medium; text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000">
+                    @Html.ActionLink("Menu Español", "menuespañol", "menuespañol.aspx", new { area = "" }, new { @class = "nav-link" })
+                </button>
+
+                <button style="background: #0c0d3b; color: #ffffff; border: double medium; text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000">
+                    @Html.ActionLink("Menu Frances", "MenuFrances", "MenuFrances.aspx", new { area = "" }, new { @class = "nav-link" })
+                </button>
+            </div>
+
+            <div id="imagenCompany" style="text-align:center">
+                <img src="~/Imagenes/companyiamn2.jpg" ; width="400" height="180" />
+            </div>
+
+
+        </section>
+    
+</main>

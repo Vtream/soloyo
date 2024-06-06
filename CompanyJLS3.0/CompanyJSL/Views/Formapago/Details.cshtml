@@ -1,0 +1,42 @@
+﻿@model CompanyJSL.Models.Forma_de_pago
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Forma_de_pago</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Efectivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Efectivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarjeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Número_de_tarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Número_de_tarjeta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Numerodepago }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

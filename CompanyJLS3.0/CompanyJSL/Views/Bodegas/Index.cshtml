@@ -1,0 +1,67 @@
+﻿@model IEnumerable<CompanyJSL.Models.Bodega>
+
+@{
+    ViewBag.Title = "Bodega";
+}
+
+<h2>Bodega</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table style="font-family:'Times New Roman'; font-size:medium" class="table">
+    <tr style=" background-color: #0c0d3b; color: white; border: white solid 5px" class="header-table; text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000">
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_de_vencimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_proveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono_proveedor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad_en_inventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Correo)
+        </th>
+        <th></th>
+        </>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_de_vencimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_proveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono_proveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad_en_inventario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idProducto }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idProducto }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idProducto })
+            </td>
+        </tr>
+    }
+
+    </table>
+    <div id="imagenCompany" style="text-align:center">
+        <img src="~/Imagenes/companyiamn.jpg" ; width="400" height="400" />
+    </div>

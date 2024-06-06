@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bodega">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="NombreProducto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha de vencimiento" Type="date" Nullable="false" />
+    <Property Name="Nombre proveedor" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono proveedor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cantidad en inventario" Type="int" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Detalle Factura">
+    <Key>
+      <PropertyRef Name="Código" />
+    </Key>
+    <Property Name="Código" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Códigoplato" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalles tarjetas">
+    <Key>
+      <PropertyRef Name="Número de tarjeta" />
+    </Key>
+    <Property Name="Número de tarjeta" Type="int" Nullable="false" />
+    <Property Name="Nombre Titular" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fecha de vencimiento" Type="date" Nullable="false" />
+    <Property Name="CVV" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Facturas">
+    <Key>
+      <PropertyRef Name="Código de facturas" />
+    </Key>
+    <Property Name="Código de facturas" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="Código" Type="int" Nullable="false" />
+    <Property Name="idProducto" Type="int" Nullable="false" />
+    <Property Name="Numerodepago" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Forma de pago">
+    <Key>
+      <PropertyRef Name="Numerodepago" />
+    </Key>
+    <Property Name="Numerodepago" Type="int" Nullable="false" />
+    <Property Name="Efectivo" Type="varchar" MaxLength="50" />
+    <Property Name="Tarjeta" Type="varchar" MaxLength="50" />
+    <Property Name="Número de tarjeta" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Tipo de documento" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="int" Nullable="false" />
+    <Property Name="Dirección" Type="nvarchar" MaxLength="50" />
+    <Property Name="Tipo de rol" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="Código de facturas" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plato">
+    <Key>
+      <PropertyRef Name="Códigoplato" />
+    </Key>
+    <Property Name="Códigoplato" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ingredientes" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" Nullable="false" />
+    <Property Name="Nombre Rol" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripción" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Bodega" EntityType="Self.Bodega" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle Factura" EntityType="Self.Detalle Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalles tarjetas" EntityType="Self.Detalles tarjetas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Forma de pago" EntityType="Self.Forma de pago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

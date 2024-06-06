@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CompanyJLS</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #0c0d3b; color: #f3ecec; font-family: 'Times New Roman'; font-size: 20px;  text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000;">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home", new { area = "" })" style="color: #f3ecec; font-family: 'Times New Roman'; font-size: 22px; text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000; ">Company JLS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li>@Html.ActionLink("Personas", "Index", "Personas", new { area = "" }, new { @class = "nav-link text-white" })</li>
+                    <li>@Html.ActionLink("Roles", "Index", "Rols", new { area = "" }, new { @class = "nav-link text-white" })</li>
+                    <li>@Html.ActionLink("Facturas", "Index", "Facturas", new { area = "" }, new { @class = "nav-link text-white" })</li>
+                    <li>@Html.ActionLink("Bodega", "Index", "Bodegas", new { area = "" }, new { @class = "nav-link text-white" })</li>
+                    <li>@Html.ActionLink("Forma de Pago", "Index", "Formapago", new { area = "" }, new { @class = "nav-link text-white" })</li>
+                    <li>@Html.ActionLink("Detalle Tarjeta", "Index", "Detallestarjetas", new { area = "" }, new { @class = "nav-link text-white" })</li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button style="background-color:#0c0d3b; border-color: #f3ecec; color: #ffffff" class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - CompanyJLS</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

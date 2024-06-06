@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CompanyJSL.Models.Detalles_tarjetas>
+
+@{
+    ViewBag.Title = "Detalle Tarjeta";
+}
+
+<h2>Detalle de la tarjeta</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table style="font-family:'Times New Roman'; font-size:medium" class="table">
+    <tr style=" background-color: #0c0d3b; color: #ffffff; border: white solid 5px" class="header-table; text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000">
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_Titular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fecha_de_vencimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CVV)
+        </th>
+        <th></th>
+        </>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Titular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha_de_vencimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CVV)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Número_de_tarjeta }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Número_de_tarjeta }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Número_de_tarjeta })
+            </td>
+        </tr>
+    }
+
+    </table>
+    <div id="imagenCompany" style="text-align:center">
+        <img src="~/Imagenes/companyiamn.jpg" ; width="400" height="400" />
+    </div>

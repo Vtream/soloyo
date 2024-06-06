@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bodega">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha de vencimiento" Type="date" Nullable="false" />
+          <Property Name="Nombre proveedor" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono proveedor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad en inventario" Type="int" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Detalle Factura">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Códigoplato" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalles tarjetas">
+          <Key>
+            <PropertyRef Name="Número de tarjeta" />
+          </Key>
+          <Property Name="Número de tarjeta" Type="int" Nullable="false" />
+          <Property Name="Nombre Titular" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fecha de vencimiento" Type="date" Nullable="false" />
+          <Property Name="CVV" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="Código de facturas" />
+          </Key>
+          <Property Name="Código de facturas" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Código" Type="int" Nullable="false" />
+          <Property Name="idProducto" Type="int" Nullable="false" />
+          <Property Name="Numerodepago" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forma de pago">
+          <Key>
+            <PropertyRef Name="Numerodepago" />
+          </Key>
+          <Property Name="Numerodepago" Type="int" Nullable="false" />
+          <Property Name="Efectivo" Type="varchar" MaxLength="50" />
+          <Property Name="Tarjeta" Type="varchar" MaxLength="50" />
+          <Property Name="Número de tarjeta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipo de documento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="int" Nullable="false" />
+          <Property Name="Dirección" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tipo de rol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="Código de facturas" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="Códigoplato" />
+          </Key>
+          <Property Name="Códigoplato" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ingredientes" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Valor" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="Nombre Rol" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripción" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Bodega" EntityType="Self.Bodega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle Factura" EntityType="Self.Detalle Factura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalles tarjetas" EntityType="Self.Detalles tarjetas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Forma de pago" EntityType="Self.Forma de pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bodega">
+          <Key>
+            <PropertyRef Name="idProducto" />
+          </Key>
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="NombreProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_de_vencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Nombre_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono_proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cantidad_en_inventario" Type="Int32" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Detalle_Factura">
+          <Key>
+            <PropertyRef Name="Código" />
+          </Key>
+          <Property Name="Código" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Códigoplato" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalles_tarjetas">
+          <Key>
+            <PropertyRef Name="Número_de_tarjeta" />
+          </Key>
+          <Property Name="Número_de_tarjeta" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Titular" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_de_vencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CVV" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="Código_de_facturas" />
+          </Key>
+          <Property Name="Código_de_facturas" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Código" Type="Int32" Nullable="false" />
+          <Property Name="idProducto" Type="Int32" Nullable="false" />
+          <Property Name="Numerodepago" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Forma_de_pago">
+          <Key>
+            <PropertyRef Name="Numerodepago" />
+          </Key>
+          <Property Name="Numerodepago" Type="Int32" Nullable="false" />
+          <Property Name="Efectivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tarjeta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Número_de_tarjeta" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_de_documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="Int32" Nullable="false" />
+          <Property Name="Dirección" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tipo_de_rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="Código_de_facturas" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plato">
+          <Key>
+            <PropertyRef Name="Códigoplato" />
+          </Key>
+          <Property Name="Códigoplato" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ingredientes" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripción" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Company_JLS_nuevaEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bodega" EntityType="Self.Bodega" />
+          <EntitySet Name="Detalle_Factura" EntityType="Self.Detalle_Factura" />
+          <EntitySet Name="Detalles_tarjetas" EntityType="Self.Detalles_tarjetas" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" />
+          <EntitySet Name="Forma_de_pago" EntityType="Self.Forma_de_pago" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Plato" EntityType="Self.Plato" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Company_JLS_nuevaEntities2">
+          <EntitySetMapping Name="Bodega">
+            <EntityTypeMapping TypeName="Model.Bodega">
+              <MappingFragment StoreEntitySet="Bodega">
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Fecha_de_vencimiento" ColumnName="Fecha de vencimiento" />
+                <ScalarProperty Name="Nombre_proveedor" ColumnName="Nombre proveedor" />
+                <ScalarProperty Name="Telefono_proveedor" ColumnName="Telefono proveedor" />
+                <ScalarProperty Name="Cantidad_en_inventario" ColumnName="Cantidad en inventario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Factura">
+            <EntityTypeMapping TypeName="Model.Detalle_Factura">
+              <MappingFragment StoreEntitySet="Detalle Factura">
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Códigoplato" ColumnName="Códigoplato" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalles_tarjetas">
+            <EntityTypeMapping TypeName="Model.Detalles_tarjetas">
+              <MappingFragment StoreEntitySet="Detalles tarjetas">
+                <ScalarProperty Name="Número_de_tarjeta" ColumnName="Número de tarjeta" />
+                <ScalarProperty Name="Nombre_Titular" ColumnName="Nombre Titular" />
+                <ScalarProperty Name="Fecha_de_vencimiento" ColumnName="Fecha de vencimiento" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="Model.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="Código_de_facturas" ColumnName="Código de facturas" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Código" ColumnName="Código" />
+                <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+                <ScalarProperty Name="Numerodepago" ColumnName="Numerodepago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Forma_de_pago">
+            <EntityTypeMapping TypeName="Model.Forma_de_pago">
+              <MappingFragment StoreEntitySet="Forma de pago">
+                <ScalarProperty Name="Numerodepago" ColumnName="Numerodepago" />
+                <ScalarProperty Name="Efectivo" ColumnName="Efectivo" />
+                <ScalarProperty Name="Tarjeta" ColumnName="Tarjeta" />
+                <ScalarProperty Name="Número_de_tarjeta" ColumnName="Número de tarjeta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="Model.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Tipo_de_documento" ColumnName="Tipo de documento" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Dirección" ColumnName="Dirección" />
+                <ScalarProperty Name="Tipo_de_rol" ColumnName="Tipo de rol" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Código_de_facturas" ColumnName="Código de facturas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plato">
+            <EntityTypeMapping TypeName="Model.Plato">
+              <MappingFragment StoreEntitySet="Plato">
+                <ScalarProperty Name="Códigoplato" ColumnName="Códigoplato" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ingredientes" ColumnName="Ingredientes" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rol">
+            <EntityTypeMapping TypeName="Model.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Nombre_Rol" ColumnName="Nombre Rol" />
+                <ScalarProperty Name="Descripción" ColumnName="Descripción" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

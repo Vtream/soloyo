@@ -1,0 +1,42 @@
+﻿@model CompanyJSL.Models.Detalles_tarjetas
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Detalles_tarjetas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_Titular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_Titular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_de_vencimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_de_vencimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVV)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Número_de_tarjeta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<CompanyJSL.Models.Rol>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2> Roles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table style="font-family:'Times New Roman'; font-size:medium" class="table">
+    <tr style=" background-color: #0c0d3b; color: #ffffff; border: white solid 5px" class="header-table;  text-shadow: -2px -2px 0 #000000, 2px -2px 0 #000000, -2px 2px 0 #000000, 2px 2px 0 #000000">
+        <th>
+            Nombre
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripción)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre_Rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripción)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdRol }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdRol }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdRol })
+            </td>
+        </tr>
+    }
+
+</table>
+<div id="imagenCompany" style="text-align:center">
+    <img src="~/Imagenes/companyiamn.jpg" ; width="400" height="400" />
+</div>
+
+@Styles.Render("~/Content/css")
